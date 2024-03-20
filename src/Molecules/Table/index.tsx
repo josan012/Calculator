@@ -1,5 +1,6 @@
-import "./style.scss";
 import Row from "../Row";
+
+import "./style.scss";
 
 const Table = () => {
     return (

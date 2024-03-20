@@ -1,5 +1,6 @@
+import Calculator from './Organisms/Calculator';
+
 import './App.css';
-import Calculator from './Pages/Calculator';
 
 function App() {
     return (

@@ -1,6 +1,7 @@
-import React, { MouseEventHandler, ReactElement, useContext, useState } from "react";
-import "./style.scss"
+import React, { useContext } from "react";
 import { NumberContext } from "../../providers/NumberProvider";
+
+import "./style.scss"
 
 interface Props {
     status: string;
