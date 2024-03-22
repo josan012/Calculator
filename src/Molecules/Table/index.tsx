@@ -1,11 +1,11 @@
-import Row from "../Row";
+import buttons from "../../Atoms/Button/buttons";
 
 import "./style.scss";
 
 const Table = () => {
     return (
         <div className="table">
-            <Row />
+            {buttons.map(button => button.button)}
         </div>
     );
 };

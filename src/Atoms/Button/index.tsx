@@ -6,41 +6,23 @@ import "./style.scss"
 interface Props {
     status: string;
     content: string;
-    isZero?: boolean;
-    isOperator?: boolean;
+    className?: string;
 }
 
-const Button: React.FC<Props> = ({ status, content, isZero, isOperator }) => {
-    const { handleSetDisplayValue, handleClearValue, handleSetCalcFunction, calculate } = useContext(NumberContext);
-    const handleSpecialButtons = (isZero: boolean) => {
-        if (isZero) {
-            handleSetDisplayValue(content);
-        } else {
-            handleClearValue();
-        }
-    }
-
-    const handleOperatorButtons = (isOperator: boolean) => {
-        if (isOperator) {
-            handleSetCalcFunction(content);
-        } else {
-            calculate();
-        }
-    }
+const Button: React.FC<Props> = ({ status, content, className }) => {
+    const { handleButtonClick } = useContext(NumberContext);
 
     if (status === 'number') {
-        return (<button className="number" onClick={() => handleSetDisplayValue(content)}>
+        return (<button className={`number ${className}`} onClick={() => handleButtonClick(content)}>
             {content}
         </button>)
     } else if (status === 'operator') {
-        return (<button className="operator" onClick={() => handleOperatorButtons(isOperator || false)}>
-            {content}
-        </button>)
-    } else {
-        return (<button className="special-button" onClick={() => handleSpecialButtons(isZero || false)}>
+        return (<button className={`operator ${className}`} onClick={() => handleButtonClick(content)}>
             {content}
         </button>)
     }
+    return null;
+
 }
 
 export default Button;
