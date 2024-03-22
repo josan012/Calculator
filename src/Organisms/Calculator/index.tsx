@@ -1,5 +1,5 @@
 import Table from "../../Molecules/Table";
-import Screen from "../../Molecules/Screen";
+import Screen from "../../Atoms/Screen";
 import NumberProvider from "../../providers/NumberProvider";
 
 import "./style.scss"
