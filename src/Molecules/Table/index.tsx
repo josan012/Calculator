@@ -5,7 +5,7 @@ import "./style.scss";
 const Table = () => {
     return (
         <div className="table">
-            {buttons.map(button => button.button)}
+            {buttons.map(button => <button key={button.value} className={button.className}>{button.value}</button>)}
         </div>
     );
 };
