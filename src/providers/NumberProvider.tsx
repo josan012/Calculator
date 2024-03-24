@@ -1,25 +1,13 @@
-import React, { ReactElement, useState } from 'react';
+import React, { ReactElement, useState } from "react";
 
 interface ContextProps {
-    handleSetDisplayValue: (num: string) => void;
-    number: string;
-    storedNumber: string;
-    handleSetStoredValue: () => void;
-    handleClearValue: () => void;
-    handleSetCalcFunction: (type: string) => void;
-    calculate: () => void;
-    functionType: string;
+    input: string;
+    handleInput: (inputValue: string) => void;
 }
 
 export const NumberContext = React.createContext<ContextProps>({
-    handleSetDisplayValue: () => { },
-    number: "",
-    storedNumber: "",
-    functionType: "",
-    handleSetStoredValue: () => { },
-    handleClearValue: () => { },
-    handleSetCalcFunction: () => { },
-    calculate: () => { },
+    input: "",
+    handleInput: () => { },
 });
 
 interface Props {
@@ -27,71 +15,47 @@ interface Props {
 }
 
 const NumberProvider: React.FC<Props> = ({ children }) => {
+    const [input, setInput] = useState("");
 
-    const [number, setNumber] = useState('');
-    const [storedNumber, setStoredNumber] = useState('');
-    const [functionType, setFunctionType] = useState('');
-    const handleSetDisplayValue = (num: string) => {
-        if ((!number.includes('.') || num !== '.') && number.length < 8) {
-            setNumber(`${(number + num).replace(/^0+/, '')}`);
+    const reset = () => {
+        setInput("");
+    };
+
+    const remove = () => {
+        setInput(input.substring(0, input.length - 1));
+    };
+
+    const solve = (input: string) => {
+        const result = eval(input);
+        setInput(result.toString());
+    };
+
+    const handleInput = (value: string): void => {
+        switch (value) {
+            case "=":
+            case "Enter":
+                solve(input);
+                break;
+            case "Clear":
+            case "Escape":
+                reset();
+                break;
+            case "Remove":
+            case "Backspace":
+                remove();
+                break;
+            default:
+                if (/^[0-9+\-*/.()]$/.test(value)) {
+                    setInput(prevInput => prevInput + value);
+                }
+                break;
         }
     };
 
-    const handleSetStoredValue = () => {
-        setStoredNumber(number);
-        setNumber('');
-    };
-
-    const handleClearValue = () => {
-        setNumber('');
-        setStoredNumber('');
-        setFunctionType('');
-    };
-
-    const handleSetCalcFunction = (type: string) => {
-        if (number) {
-            setFunctionType(type);
-            handleSetStoredValue();
-        }
-        if (storedNumber) {
-            setFunctionType(type);
-        }
-    };
-
-    const calculate = () => {
-        if (number && storedNumber) {
-            let result = 0;
-            switch (functionType) {
-                case '+':
-                    result = parseFloat(storedNumber) + parseFloat(number);
-                    break;
-                case '-':
-                    result = parseFloat(storedNumber) - parseFloat(number);
-                    break;
-                case '/':
-                    result = parseFloat(storedNumber) / parseFloat(number);
-                    break;
-                case '*':
-                    result = parseFloat(storedNumber) * parseFloat(number);
-                    break;
-                default:
-                    break;
-            }
-            result = Math.round(result * 100) / 100;
-            setStoredNumber(result.toString());
-            setNumber('');
-        }
-    };
 
     const contextValue: ContextProps = {
-        handleSetDisplayValue,
-        functionType,
-        number,
-        storedNumber,
-        handleSetStoredValue,
-        handleClearValue,
-        handleSetCalcFunction,
-        calculate,
+        input,
+        handleInput,
     };
 
     return (
