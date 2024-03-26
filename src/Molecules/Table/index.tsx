@@ -7,9 +7,7 @@ const Table = () => {
     const { handleInput } = useContext(NumberContext);
 
     useEffect(() => {
-        const handleKeyDown = (event: KeyboardEvent) => {
-            handleInput(event.key);
-        };
+        const handleKeyDown = (event: KeyboardEvent) => handleInput(event.key);
 
         document.addEventListener('keydown', handleKeyDown);
 
