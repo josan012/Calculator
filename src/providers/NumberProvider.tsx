@@ -59,15 +59,12 @@ const NumberProvider: React.FC<Props> = ({ children }) => {
                 setInput(prevInput => prevInput + value);
                 break;
             case "Enter":
-            case "=":
                 solve(input);
                 break;
             case "Escape":
-            case "Clear":
                 reset();
                 break;
             case "Backspace":
-            case "Remove":
                 setInput(input.substring(0, input.length - 1));
                 break;
             default:
