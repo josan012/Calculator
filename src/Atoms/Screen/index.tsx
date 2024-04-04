@@ -5,10 +5,10 @@ import "./style.scss";
 
 
 const Screen = () => {
-    const { number, storedNumber } = useContext(NumberContext);
+    const { input } = useContext(NumberContext);
     return (
         <div className="screen">
-            {!number && !storedNumber ? 0 : number || storedNumber}
+            {input}
         </div>
     )
 }
