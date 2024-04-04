@@ -1,82 +1,81 @@
-import Button from ".";
-
 const buttons = [
     {
-        id: 0,
-        button: <Button content="Clear" status="operator" className="a" />
+        value: "Escape",
+        className: "operator",
     },
     {
-        id: 1,
-        button: <Button content="(" status="operator" className="b" />
+        value: "(",
+        className: "operator",
     },
     {
-        id: 2,
-        button: <Button content=")" status="operator" className="c" />
+        value: ")",
+        className: "operator",
     },
     {
-        id: 3,
-        button: <Button content="/" status="operator" className="d" />
+        value: "/",
+        className: "operator",
     },
     {
-        id: 4,
-        button: <Button content="7" status="number" className="e" />
+        value: "7",
+        className: "number",
     },
     {
-        id: 5,
-        button: <Button content="8" status="number" className="f" />
+        value: "8",
+        className: "number",
     },
     {
-        id: 6,
-        button: <Button content="9" status="number" className="g" />
+        value: "9",
+        className: "number",
     },
     {
-        id: 7,
-        button: <Button content="-" status="operator" className="h" />
+        value: "-",
+        className: "operator",
     },
     {
-        id: 8,
-        button: <Button content="4" status="number" className="i" />
+        value: "4",
+        className: "number",
     },
     {
-        id: 9,
-        button: <Button content="5" status="number" className="j" />
+        value: "5",
+        className: "number",
     },
     {
-        id: 10,
-        button: <Button content="6" status="number" className="k" />
+        value: "6",
+        className: "number",
     },
     {
-        id: 11,
-        button: <Button content="+" status="operator" className="l" />
+        value: "+",
+        className: "operator",
     },
     {
-        id: 12,
-        button: <Button content="1" status="number" className="m" />
+        value: "1",
+        className: "number",
     },
     {
-        id: 13,
-        button: <Button content="2" status="number" className="n" />
+        value: "2",
+        className: "number",
     },
     {
-        id: 14,
-        button: <Button content="3" status="number" className="o" />
+        value: "3",
+        className: "number",
     },
     {
-        id: 15,
-        button: <Button content="*" status="operator" className="p" />
+        value: "*",
+        className: "operator",
     },
     {
-        id: 16,
-        button: <Button content="0" status="number" className="q" />
+        value: "0",
+        className: "number two-col",
     },
     {
-        id: 17,
-        button: <Button content="Remove" status="number" className="r" />
+        value: "Backspace",
+        className: "number",
     },
     {
-        id: 18,
-        button: <Button content="=" status="operator" className="s"/>
+        value: "Enter",
+        className: "operator",
     },
+
 ];
 
 export default buttons;
