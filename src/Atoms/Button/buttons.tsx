@@ -1,6 +1,6 @@
 const buttons = [
     {
-        value: "Clear",
+        value: "Escape",
         className: "operator",
     },
     {
@@ -68,11 +68,11 @@ const buttons = [
         className: "number two-col",
     },
     {
-        value: "Remove",
+        value: "Backspace",
         className: "number",
     },
     {
-        value: "=",
+        value: "Enter",
         className: "operator",
     },
 
